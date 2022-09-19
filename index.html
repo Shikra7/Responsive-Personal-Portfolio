@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Responsive Personal Portfolio</title>
+    <script type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </head>
+  <body>
+    <section class="banner">
+      <header>
+        <a href="#" class="logo">Portfolio</a>
+        <div class="toggle"><ion-icon name="menu" class="icon"></ion-icon></div>
+      </header>
+
+      <img src="man.png" alt="man" class="man">
+      <div class="content">
+        <div class="contentBx">
+          <h4>Hello,</h4>
+          <h2>I'm Ahmad</h2>
+          <h3>Professional Web Designer</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio nisi
+            recusandae architecto similique facere fuga illum accusantium
+            quisquam accusamus magnam obcaecati mollitia ipsam consectetur
+            numquam iusto, deleniti quas vitae eius.</p>
+          <a href="#">Hrie Me</a>
+          <a href="#">Download CV</a>
+        </div>
+      </div>
+      <ul class="sci">
+        <li><ion-icon name="logo-facebook" class="social"></ion-icon></li>
+        <li><ion-icon name="logo-github" class="social"></ion-icon></li>
+        <li><ion-icon name="logo-linkedin" class="social"></ion-icon></li>
+      </ul>
+
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Work</a></li>
+        <li><a href="#">Resume</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+
+      <img src="1.png" alt="illustration" class="element element-1"
+        data-speed="8">
+      <img src="2.png" alt="illustration" class="element element-2"
+        data-speed="6">
+      <img src="3.png" alt="illustration" class="element element-3"
+        data-speed="-10">
+      <img src="4.png" alt="illustration" class="element element-4"
+        data-speed="-6">
+    </section>
+
+    <script>
+      const toggle = document.querySelector('.toggle');
+      const icon = document.querySelector('.icon');
+      const banner = document.querySelector('.banner');
+      toggle.onclick = function () {
+        toggle.classList.toggle('active');
+        banner.classList.toggle('active');
+        toggle.classList.contains('active') ? icon.setAttribute('name', 'close') : icon.setAttribute('name', 'menu');
+      }
+      function parallax(e) {
+        this.querySelectorAll('.element').forEach(layer =>{
+          const speed = layer.getAttribute('data-speed');
+          const x = (window.innerWidth - e.pageX*speed)/100;
+          layer.style.transform =`translateX(${x}px)`;
+        })
+      }
+      document.addEventListener("mousemove" ,parallax);
+    </script>
+  </body>
+</html>
